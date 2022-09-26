@@ -1,0 +1,16 @@
+{
+  "name": "starter",
+  "version": "1.0.0",
+  "description": "Recipe application",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "Aparna Chougale",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-image": "^2.7.0",
+    "@parcel/transformer-sass": "^2.7.0",
+    "parcel": "^2.7.0"
+  }
+}
