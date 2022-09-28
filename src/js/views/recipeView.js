@@ -5,6 +5,8 @@ import { Fraction } from 'fractional';
 class RecipeView {
   #parentElement = document.querySelector('.recipe');
   #data;
+  #errorMessage = 'We could not find the recipe. Please try another one!';
+  #message = '';
 
   render(data) {
     this.#data = data;
@@ -18,16 +20,70 @@ class RecipeView {
     this.#parentElement.innerHTML = '';
   }
 
-  renderSpinner = function () {
+  renderSpinner() {
     const markup = `
         <div class="spinner">
           <svg>
             <use href="${icons}#icon-loader"></use>
           </svg>
         </div>`;
-    this.#parentElement.innerHTML = '';
+    this.#clear();
     this.#parentElement.insertAdjacentHTML('afterbegin', markup);
-  };
+  }
+
+  renderError(message = this.#errorMessage) {
+    const markup = `<div class="error">
+      <div>
+        <svg>
+          <use href="${icons}#icon-alert-triangle"></use>
+        </svg>
+      </div>
+      <p>${message}</p>
+    </div>`;
+
+    this.#clear();
+    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  renderMessage(message = this.#message) {
+    const markup = `<div class="message">
+      <div>
+        <svg>
+          <use href="${icons}#icon-smile"></use>
+        </svg>
+      </div>
+      <p>${message}</p>
+    </div>`;
+
+    this.#clear();
+    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
+  //   No recipes found for your query. Please try again!
+
+  addHandlerRender(controlRecipe) {
+    ['hashchange', 'load'].forEach(ev =>
+      window.addEventListener(ev, controlRecipe)
+    );
+    // window.addEventListener('hashchange', controlRecipe);
+    // window.addEventListener('load', controlRecipe);
+  }
+
+  #generateMarkupIngredient(ing) {
+    return `
+             <li class="recipe__ingredient">
+              <svg class="recipe__icon">
+                <use href="${icons}#icon-check"></use>
+              </svg>
+              <div class="recipe__quantity">${
+                ing.quantity ? new Fraction(ing.quantity).toString() : ''
+              }</div>
+              <div class="recipe__description">
+                <span class="recipe__unit">${ing.unit}</span>
+                ${ing.description}
+              </div>
+            </li>
+            `;
+  }
 
   #generateMarkup() {
     return `<figure class="recipe__fig">
@@ -115,31 +171,6 @@ class RecipeView {
             </svg>
           </a>
         </div>`;
-  }
-
-  addHandlerRender(controlRecipe) {
-    ['hashchange', 'load'].forEach(ev =>
-      window.addEventListener(ev, controlRecipe)
-    );
-    // window.addEventListener('hashchange', controlRecipe);
-    // window.addEventListener('load', controlRecipe);
-  }
-
-  #generateMarkupIngredient(ing) {
-    return `
-             <li class="recipe__ingredient">
-              <svg class="recipe__icon">
-                <use href="${icons}#icon-check"></use>
-              </svg>
-              <div class="recipe__quantity">${
-                ing.quantity ? new Fraction(ing.quantity).toString() : ''
-              }</div>
-              <div class="recipe__description">
-                <span class="recipe__unit">${ing.unit}</span>
-                ${ing.description}
-              </div>
-            </li>
-            `;
   }
 }
 

@@ -27,7 +27,8 @@ const controlRecipe = async function () {
     recipeView.render(model.state.recipe); // only class object is exported hence...
     // const recipeView = new recipeView(model.state.recipe); if class were exported
   } catch (err) {
-    alert(err);
+    console.error(err);
+    recipeView.renderError();
   }
 };
 // controlRecipe();
