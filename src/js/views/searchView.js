@@ -9,7 +9,6 @@ class searchView {
 
   _clearInput() {
     this._parentEl.querySelector('.search__field').value = '';
-    console.log(this._parentEl);
   }
 
   addHandlerSearch(handler) {
