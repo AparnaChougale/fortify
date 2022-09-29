@@ -2,6 +2,8 @@ import * as model from './model.js';
 import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
+import paginationView from './views/paginationView.js';
+
 import 'core-js/stable'; // Polyfilling everything else
 import 'regenerator-runtime/runtime'; // Polyfilling asych and await
 import { async } from 'regenerator-runtime';
@@ -49,15 +51,38 @@ const controlSearchResults = async function () {
     await model.loadSearchResult(query);
 
     //  3) Render results
+    // resultsView.render(model.state.search.results);
     resultsView.render(model.getSearchResultsPage());
+
+    //  4) Render initial pagination buttons
+    paginationView.render(model.state.search);
   } catch (err) {
     console.error(err);
   }
 };
 
+const controlPagination = function (goToPage) {
+  //  3) Render New results
+  resultsView.render(model.getSearchResultsPage(goToPage));
+
+  //  4) Render New pagination buttons
+  paginationView.render(model.state.search);
+};
+
+const controlServings = function (newServings) {
+  //  Update the recipe servings (in state)
+  model.updateServings(newServings);
+
+  // Update the recipe view
+  recipeView.render(model.state.recipe);
+
+  //  Update the recipe view
+};
 const init = function () {
   recipeView.addHandlerRender(controlRecipe);
+  recipeView.addHandlerUpdateServing(controlServings);
   searchView.addHandlerSearch(controlSearchResults);
+  paginationView.addHandleClick(controlPagination);
 };
 
 init();
