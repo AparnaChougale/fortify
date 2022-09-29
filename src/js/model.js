@@ -52,6 +52,8 @@ export const loadSearchResult = async function (query) {
         image: rec.image_url,
       };
     });
+    //  reset pagination when new search happens
+    state.search.page = 1;
     // console.log(state.search.results);
   } catch (err) {
     console.error(`${err}💥💥💥💥💥`);
