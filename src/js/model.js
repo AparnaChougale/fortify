@@ -43,7 +43,7 @@ export const loadRecipe = async function (id) {
     throw err;
   }
 
-  console.log(state.recipe);
+  // console.log(state.recipe);
 };
 
 export const loadSearchResult = async function (query) {
