@@ -22,12 +22,14 @@ class PaginationView extends View {
 
     //  Page 1, and there are other pages
     if (currentPage === 1 && numPages > 1) {
-      return `${this._generateMarkupButtonNext(currentPage, numPages)}`;
+      return `${this._generateMarkupButtonNext(currentPage, numPages)}
+      ${this._numOfPages(currentPage, numPages)}`;
     }
 
     //  Last page
     if (currentPage === numPages && numPages > 1) {
-      return `${this._generateMarkupButtonPrev(currentPage, numPages)}`;
+      return `${this._generateMarkupButtonPrev(currentPage, numPages)}
+      ${this._numOfPages(currentPage, numPages)}`;
     }
 
     //  Other page
@@ -35,18 +37,19 @@ class PaginationView extends View {
       return `${this._generateMarkupButtonNext(
         currentPage,
         numPages
-      )}${this._generateMarkupButtonPrev(currentPage, numPages)}`;
+      )}${this._generateMarkupButtonPrev(currentPage, numPages)}
+      ${this._numOfPages(currentPage, numPages)}`;
     }
 
     //  Page 1, and there are NO other pages
-    return ` `;
+    return ` ${this._numOfPages(currentPage, numPages)} `;
   }
 
   _generateMarkupButtonNext(currentPage, numPages) {
     return `<button data-goto="${
       currentPage + 1
     }" class="btn--inline pagination__btn--next">
-            <span>Page ${currentPage + 1} / ${numPages}</span>
+            <span>Page ${currentPage + 1}</span>
             <svg class="search__icon">
               <use href="${icons}#icon-arrow-right"></use>
             </svg>
@@ -60,14 +63,13 @@ class PaginationView extends View {
             <svg class="search__icon">
               <use href="${icons}#icon-arrow-left"></use>
             </svg>
-            <span>Page ${currentPage - 1} / ${numPages}</span>
+            <span>Page ${currentPage - 1}</span>
           </button>`;
   }
 
-  // _numOfPages(currentPage, numPages) {
-  //   return `<span class="btn--inline>Page ${currentPage}</span>`;
-  // }
-  // ${this._numOfPages(currentPage, numPages)} to be called in returns
+  _numOfPages(currentPage, numPages) {
+    return `<div class="pagination__btn--center">${currentPage} / ${numPages}</div>`;
+  }
 }
 
 export default new PaginationView();

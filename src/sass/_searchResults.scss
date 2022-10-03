@@ -26,6 +26,20 @@
     &--next {
       float: right;
     }
+    &--center {
+      justify-content: center;
+      width: 30px;
+      margin-left: 45%;
+      margin-top: 10%;
+      // margin-right: 45%;
+      color: $color-grey-dark-2;
+      // font-size: 1.3rem;
+      font-weight: 600;
+      border: none;
+      background-color: $color-grey-light-1;
+      padding: 0.1rem 0.4rem;
+      border-radius: 10rem;
+    }
   }
 }
 
@@ -35,8 +49,8 @@
   padding: 0 3.5rem;
   margin-top: 4rem;
 
-  .twitter-link:link,
-  .twitter-link:visited {
+  .git-link:link,
+  .git-link:visited {
     color: $color-grey-dark-2;
   }
 }
