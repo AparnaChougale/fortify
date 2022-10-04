@@ -2,6 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="description" content="Search over 1,000,000 recipes" />
+    <meta name="keywords" content="HTML, CSS, JavaScript" />
+    <meta name="author" content="Aparna Chougale" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link
@@ -13,7 +16,7 @@
     <link rel="stylesheet" href="src/sass/main.scss" />
     <script type="module" src="src/js/controller.js"></script>
 
-    <title>forkify // Search over 1,000,000 recipes</title>
+    <title>forkify recipe search</title>
   </head>
 
   <body>
@@ -128,7 +131,8 @@
             target="_blank"
             href="https://github.com/AparnaChougale/"
             >Aparna Chougale</a
-          >. Developed this project during learning JavaScript.
+          >
+          2022. Developed this project while learning JavaScript.
         </p>
       </div>
 
@@ -262,26 +266,53 @@
         <div class="upload__column">
           <h3 class="upload__heading">Recipe data</h3>
           <label>Title</label>
-          <input value="TEST30" required name="title" type="text" />
+          <input
+            required
+            name="title"
+            type="text"
+            placeholder="Title of the recipe"
+          />
           <label>URL</label>
-          <input value="TEST30" required name="sourceUrl" type="text" />
+          <input
+            required
+            name="sourceUrl"
+            type="text"
+            placeholder="URL of the recipe"
+          />
           <label>Image URL</label>
-          <input value="TEST30" required name="image" type="text" />
+          <input required name="image" type="text" placeholder="Image URL" />
           <label>Publisher</label>
-          <input value="TEST30" required name="publisher" type="text" />
+          <input
+            required
+            name="publisher"
+            type="text"
+            placeholder="Publisher"
+          />
           <label>Prep time</label>
-          <input value="23" required name="cookingTime" type="number" />
+          <input
+            required
+            name="cookingTime"
+            type="number"
+            min="1"
+            placeholder="Prep time"
+          />
           <label>Servings</label>
-          <input value="23" required name="servings" type="number" />
+          <input
+            required
+            name="servings"
+            type="number"
+            min="1"
+            placeholder="No. of servings"
+          />
         </div>
 
         <div class="upload__column">
           <h3 class="upload__heading">Ingredients</h3>
           <label>Ingredient 1</label>
           <input
+            required
             value="0.5,kg,Rice"
             type="text"
-            required
             name="ingredient-1"
             placeholder="Format: 'Quantity,Unit,Description'"
           />
