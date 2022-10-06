@@ -1,6 +1,7 @@
 import View from './view.js';
 import previewView from './previewView.js';
 import icons from 'url:../../img/icons.svg';
+const Fracty = require('fracty');
 
 class CartView extends View {
   _parentElement = document.querySelector('.cart__list');
@@ -22,7 +23,7 @@ class CartView extends View {
               </svg>
             </div>
             <div class="recipe__quantity">
-              ${ing.quantity ? new Fraction(ing.quantity).toString() : ''}
+              ${ing.quantity ? Fracty(ing.quantity).toString() : ''}
             </div>
             <div class="recipe__description">
               <span class="recipe__unit">${ing.unit}</span> ${ing.description}
