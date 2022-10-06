@@ -12,6 +12,7 @@ export const state = {
     page: 1,
   },
   bookmarks: [],
+  cart: [],
 };
 
 const createRecipeObject = function (data) {
@@ -161,3 +162,20 @@ export const uploadRecipe = async function (newRecipe) {
     throw err;
   }
 };
+
+export const addCart = function (recipe) {
+  //  Add ingredients to cart
+  // const ing = state.recipe.ingredients.map(ing => ing);
+  const { ingredients } = state.recipe;
+  state.cart.push(...ingredients);
+  // console.log(ingredients);
+};
+
+// export const addItem=function(){
+//   const item={
+//     id=uniqid(),
+//     quantity,
+//     unit,
+//     description
+//   }
+// }

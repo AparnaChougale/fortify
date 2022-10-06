@@ -119,6 +119,38 @@
   }
 }
 
+.btn--cart {
+  text-transform: uppercase;
+  font-weight: 550;
+  background-image: $gradient;
+  color: #fff;
+  border-radius: 10rem;
+  border: none;
+  cursor: pointer;
+  height: 3.5rem;
+  width: 22rem;
+  // margin-left: auto;
+  transition: all 0.2s;
+
+  display: flex;
+  // float: left;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10%;
+
+  &:hover {
+    transform: scale(1.07);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  span {
+    margin: 0 0.4rem;
+  }
+}
+
 .btn--tiny {
   height: 2rem;
   width: 2rem;

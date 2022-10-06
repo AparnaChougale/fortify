@@ -42,7 +42,10 @@ class PaginationView extends View {
     }
 
     //  Page 1, and there are NO other pages
-    return ` ${this._numOfPages(currentPage, numPages)} `;
+    if (currentPage === 1 && numPages === 1)
+      return ` ${this._numOfPages(currentPage, numPages)}`;
+
+    return '';
   }
 
   _generateMarkupButtonNext(currentPage, numPages) {
@@ -68,7 +71,7 @@ class PaginationView extends View {
   }
 
   _numOfPages(currentPage, numPages) {
-    return `<div class="pagination__btn--center">${currentPage} / ${numPages}</div>`;
+    return `<br/><br/><div class="pagination__btn--center">${currentPage} / ${numPages}</div>`;
   }
 }
 

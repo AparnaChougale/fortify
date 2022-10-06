@@ -6,6 +6,7 @@ import resultsView from './views/resultsView.js';
 import paginationView from './views/paginationView.js';
 import bookmarksView from './views/bookmarksView.js';
 import addRecipeView from './views/addRecipeView.js';
+import cartView from './views/cartView.js';
 import 'core-js/stable'; // Polyfilling everything else
 import 'regenerator-runtime/runtime'; // Polyfilling asych and await
 import { async } from 'regenerator-runtime';
@@ -121,6 +122,15 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
+const controlCart = function () {
+  // Add ingregient to cart array
+  model.addCart(model.state.cart);
+  console.log(model.state.cart);
+
+  // Render the ing
+  cartView.cartRender(model.state.cart);
+};
+
 const init = function () {
   bookmarksView.addHandlerRender(controlBookmarks);
   recipeView.addHandlerRender(controlRecipe);
@@ -129,6 +139,9 @@ const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandleClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
+  recipeView.addHandlerCart(controlCart);
+
+  // cartView.addHandlerRender(controlCart);
 };
 
 init();

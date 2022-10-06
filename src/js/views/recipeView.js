@@ -31,6 +31,16 @@ class RecipeView extends View {
     });
   }
 
+  addHandlerCart(handler) {
+    this._parentElement.addEventListener('click', function (e) {
+      // const btn = e.target.closest('.btn--cart');
+      const btn = e.target.closest('.btn--small');
+
+      if (!btn) return;
+      handler();
+    });
+  }
+
   _generateMarkupIngredient(ing) {
     return `
              <li class="recipe__ingredient">
@@ -100,6 +110,7 @@ class RecipeView extends View {
               <use href="${icons}#icon-user"></use>
             </svg>
           </div>
+
           <button class="btn--round btn--bookmark">
             <svg class="">
               <use href="${icons}#icon-bookmark${
@@ -108,7 +119,7 @@ class RecipeView extends View {
             </svg>
           </button>
         </div>
-
+         
         <div class="recipe__ingredients">
           <h2 class="heading--2">Recipe ingredients</h2>
           <ul class="recipe__ingredient-list">
@@ -118,8 +129,18 @@ class RecipeView extends View {
               .join('')}
            
           </ul>
-        </div>
 
+          <div> 
+             <button class="btn--small">
+             <svg class="search__icon">
+               <use href="${icons}#icon-shopping-cart"></use>
+             </svg>
+                 <span>add to shopping list </span>
+             </button>
+          </div>
+          
+        </div>
+        
         <div class="recipe__directions">
           <h2 class="heading--2">How to cook it</h2>
           <p class="recipe__directions-text">

@@ -83,6 +83,17 @@
     font-weight: 600;
   }
 
+  &__ing {
+    font-size: 1.15rem;
+    color: $color-grey-dark-1;
+    text-transform: capitalize;
+    font-weight: 400;
+    padding-left: 10%;
+    margin: 2px;
+    // background: #f2efee;
+    border-bottom: 1px solid #f2efee;
+  }
+
   &__user-generated {
     background-color: darken($color-grey-light-2, 2%);
 
