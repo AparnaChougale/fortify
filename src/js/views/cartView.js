@@ -8,14 +8,11 @@ class CartView extends View {
     'No ingredients added yet. Find a nice recipe and add the ingredients to it :)';
   _message = '';
 
-  _generateMarkup(data) {
-    const _data = data;
-    // console.log(_data);
-    return _data.map(this._generateMarkupPreview).join('');
+  _generateMarkup() {
+    return this._data.map(this._generateMarkupPreview).join('');
   }
 
   _generateMarkupPreview(ing) {
-    console.log(ing);
     return `
         
           <li class="recipe__ingredient preview__ing">

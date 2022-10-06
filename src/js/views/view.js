@@ -12,21 +12,12 @@ export default class View {
    * @todo Finish implementation
    */
 
-  cartRender(data) {
-    this._data = data;
-    console.log(this._data);
-    const markup1 = this._generateMarkup(this._data);
-    this._clear();
-    this._parentElement.insertAdjacentHTML('afterbegin', markup1);
-  }
-
   render(data, render = true) {
     if (!data || (Array.isArray(data) && data.length === 0))
       return this.renderError();
 
     this._data = data;
     const markup = this._generateMarkup();
-    // console.log(this._data);
 
     if (!render) return markup;
 

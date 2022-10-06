@@ -98,7 +98,7 @@ const controlAddRecipe = async function (newRecipe) {
 
     // Upload the new recipe data
     await model.uploadRecipe(newRecipe);
-    console.log(model.state.recipe);
+    // console.log(model.state.recipe);
 
     // Render new recipe
     recipeView.render(model.state.recipe);
@@ -125,10 +125,9 @@ const controlAddRecipe = async function (newRecipe) {
 const controlCart = function () {
   // Add ingregient to cart array
   model.addCart(model.state.cart);
-  console.log(model.state.cart);
 
-  // Render the ing
-  cartView.cartRender(model.state.cart);
+  // Render the ingredients
+  cartView.render(model.state.cart);
 };
 
 const init = function () {
@@ -140,8 +139,6 @@ const init = function () {
   paginationView.addHandleClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
   recipeView.addHandlerCart(controlCart);
-
-  // cartView.addHandlerRender(controlCart);
 };
 
 init();
