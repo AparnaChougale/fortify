@@ -34,9 +34,3 @@ class CartView extends View {
 }
 
 export default new CartView();
-
-//   <li class="preview">
-//     <div>
-//       <h4 class="preview__ing">${data}</h4>
-//     </div>
-//   </li>;

@@ -154,9 +154,6 @@ export const uploadRecipe = async function (newRecipe) {
     const data = await AJAX(`${API_URL}?key=${KEY}`, recipe);
     state.recipe = createRecipeObject(data);
     addBookkmark(state.recipe);
-
-    // console.log(data);
-    // console.log(recipe);
   } catch (err) {
     throw err;
   }
@@ -164,17 +161,8 @@ export const uploadRecipe = async function (newRecipe) {
 
 export const addCart = function (recipe) {
   //  Add ingredients to cart
-  // const ing = state.recipe.ingredients.map(ing => ing);
   const { ingredients } = state.recipe;
+
   state.cart.push(...ingredients);
   // console.log(ingredients);
 };
-
-// export const addItem=function(){
-//   const item={
-//     id=uniqid(),
-//     quantity,
-//     unit,
-//     description
-//   }
-// }
